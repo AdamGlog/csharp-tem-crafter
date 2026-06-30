@@ -1,4 +1,3 @@
-
 namespace FirstFiddle;
 
 class Program
@@ -12,10 +11,14 @@ class Program
         Console.WriteLine(menu + "\n");
 
         Inventory userInv = new(owner: "Adam", inventoryItems: ["Sword", "Bow"]);
-        ImplicitModifier testMod = new(1, "+{0} to Lightning Damage per {1} Strength", [20, 5], ["lightning"]);
-        SuffixModifier testSuffixMod = new(2, "+{0}% increased Charge Recovery if you have at least {1} Intelligence", [50, 100], ["Charges", "Intelligence"]);
-
-
+        // ImplicitModifier testMod = new(1, "+{0} to Lightning Damage per {1} Strength", [20, 5], ["lightning"]);
+        // SuffixModifier testSuffixMod = new(2, "+{0}% increased Charge Recovery if you have at least {1} Intelligence", [50, 100], ["Charges", "Intelligence"]);
+        List<ImplicitModifier> modList = ModLoader.DeserializeMods<ImplicitModifier>("src/modifiers/implicits.json");
+        modList = ModLoader.ParseMods(modList);
+        foreach (ImplicitModifier mod in modList)
+        {
+            Console.WriteLine(mod.ToString());
+        }
         while (true)
         {
             ConsoleKeyInfo userResponse = Console.ReadKey(intercept: true);
@@ -29,9 +32,9 @@ class Program
             {
                 case '1':
                     Console.WriteLine("Craft");
-                    Console.WriteLine(testMod.ToString() + " " + testMod.ModifierText + " " + testMod.ParsedModifier);
-                    testMod.ParseModifier();
-                    Console.WriteLine(testMod.ToString() + " " + testMod.ModifierText + " " + testMod.ParsedModifier);
+                    // Console.WriteLine(testSuffixMod.ToString() + " " + testSuffixMod.ModifierText + " " + testSuffixMod.ParsedModifier);
+                    // testSuffixMod.ParseModifier();
+                    // Console.WriteLine(testSuffixMod.ToString() + " " + testSuffixMod.ModifierText + " " + testSuffixMod.ParsedModifier);
                     break;
                 case '2':
                     Console.WriteLine($"This is {userInv.Owner}'s Inventory:");

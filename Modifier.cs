@@ -4,7 +4,7 @@ public abstract class Modifier(int modifierId, string modifierText, List<float> 
 {
     public int ModifierId { get; set; } = modifierId;
     public string ModifierText { get; set; } = modifierText;
-    public string ParsedModifier { get; set; }
+    public string? ParsedModifier { get; set; }
     public List<float> Values { get; set; } = values;
     public List<string> Tags { get; set; } = tags;
 

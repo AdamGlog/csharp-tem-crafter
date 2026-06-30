@@ -6,6 +6,9 @@
 # Zed files for sureň
 .zed
 
+# Source project files
+src/
+
 # dotenv files
 .env
 
