@@ -1,7 +1,7 @@
 namespace FirstFiddle;
 
-public abstract class ExplicitModifier(int modifierId, string modifierText, List<float> values, List<string> tags)
-                      : Modifier(modifierId, modifierText, values, tags)
+public abstract class ExplicitModifier(int modifierId, string modifierText, List<StatRange> statsRanges, List<string> tags)
+                      : Modifier(modifierId, modifierText, statsRanges, tags)
 {
     // public int ModifierId { get; set; }
     // public string ModifierText { get; set; }

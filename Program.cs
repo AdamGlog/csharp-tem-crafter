@@ -2,6 +2,9 @@ namespace FirstFiddle;
 
 class Program
 {
+
+    private static readonly Random randomizer = new();
+
     static void Main(string[] args)
     {
         const string userName = "Adam";
@@ -11,10 +14,9 @@ class Program
         Console.WriteLine(menu + "\n");
 
         Inventory userInv = new(owner: "Adam", inventoryItems: ["Sword", "Bow"]);
-        // ImplicitModifier testMod = new(1, "+{0} to Lightning Damage per {1} Strength", [20, 5], ["lightning"]);
-        // SuffixModifier testSuffixMod = new(2, "+{0}% increased Charge Recovery if you have at least {1} Intelligence", [50, 100], ["Charges", "Intelligence"]);
+
         List<ImplicitModifier> modList = ModLoader.DeserializeMods<ImplicitModifier>("src/modifiers/implicits.json");
-        modList = ModLoader.ParseMods(modList);
+        modList = ModLoader.ParseMods(modList, randomizer);
         foreach (ImplicitModifier mod in modList)
         {
             Console.WriteLine(mod.ToString());

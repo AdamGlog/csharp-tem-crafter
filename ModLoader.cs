@@ -12,15 +12,16 @@ public static class ModLoader
         {
             throw new FileNotFoundException($"Could not find file at: {fullPath}");
         }
-        return JsonConvert.DeserializeObject<List<T>>(File.ReadAllText(fullPath)) ?? new List<T>();
+        return JsonConvert.DeserializeObject<List<T>>(File.ReadAllText(fullPath)) ?? [];
     }
 
-    public static List<T> ParseMods<T>(List<T> mods) where T : Modifier
+    public static List<T> ParseMods<T>(List<T> mods, Random randomizer) where T : Modifier
     {
         if (mods == null || mods.Count == 0) return [];
+
         foreach (T mod in mods)
         {
-            mod.ParseModifier();
+            mod.ParseModifier(randomizer);
         }
         return mods ?? [];
     }

@@ -1,6 +1,7 @@
 namespace FirstFiddle;
 
-public class SuffixModifier(int modifierId, string modifierText, List<float> values, List<string> tags) : ExplicitModifier(modifierId, modifierText, values, tags)
+public class SuffixModifier(int modifierId, string modifierText, List<StatRange> statsRanges, List<string> tags)
+             : ExplicitModifier(modifierId, modifierText, statsRanges, tags)
 {
 
 }
