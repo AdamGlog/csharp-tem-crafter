@@ -1,8 +1,9 @@
 using FirstFiddle.Itemization;
 using FirstFiddle.Itemization.Mods;
 using FirstFiddle.Util;
+using Newtonsoft.Json;
 
-namespace FirstFiddle.Main;
+namespace FirstFiddle;
 
 class Program
 {
@@ -19,11 +20,24 @@ class Program
 
         Inventory userInv = new(owner: "Adam", inventoryItems: ["Sword", "Bow"]);
 
-        List<ImplicitModifier> modList = ModLoader.DeserializeMods<ImplicitModifier>("src/modifiers/implicits.json");
-        modList = ModLoader.ParseMods(modList, randomizer);
-        foreach (ImplicitModifier mod in modList)
+        List<ImplicitModifier> implicitModList = ModLoader.DeserializeMods<ImplicitModifier>("src/modifiers/implicits.json");
+        implicitModList = ModLoader.ParseMods(implicitModList, randomizer);
+        List<PrefixModifier> prefixModList = ModLoader.DeserializeMods<PrefixModifier>("src/modifiers/prefixes.json");
+        prefixModList = ModLoader.ParseMods(prefixModList, randomizer);
+        List<SuffixModifier> suffixModList = ModLoader.DeserializeMods<SuffixModifier>("src/modifiers/suffixes.json");
+        suffixModList = ModLoader.ParseMods(suffixModList, randomizer);
+        List<Modifier> modList = [];
+
+        modList.AddRange(implicitModList);
+        modList.AddRange(prefixModList);
+        modList.AddRange(suffixModList);
+
+        Console.WriteLine(JsonConvert.SerializeObject(modList, Formatting.Indented));
+
+        foreach (var mod in modList)
         {
             Console.WriteLine(mod.ToString());
+
         }
         while (true)
         {

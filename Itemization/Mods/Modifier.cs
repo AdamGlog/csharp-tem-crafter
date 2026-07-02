@@ -2,26 +2,19 @@ using FirstFiddle.Util;
 
 namespace FirstFiddle.Itemization.Mods;
 
-public abstract class Modifier
+public abstract class Modifier(string name, int iLevel, int tier, string modifierText, List<StatRange> statsRanges, List<string> tags)//(string name, int iLevel, int tier, string modifierText, List<StatRange> statsRanges, List<string> tags)
 {
-    // Auto incrementing int fo ModifierId
+    // Auto incrementing int to ModifierId
     private static int nextId = 1;
-    public int ModifierId { get; private set; }
-    public string ModifierText { get; set; }
+    public string Name { get; set; } = name ?? "";
+    public int ILevel { get; set; } = iLevel;
+    public int Tier { get; set; } = tier;
+    public int ModifierId { get; private set; } = nextId++; // Runs safely at the end of property binding
+    public string ModifierText { get; set; } = modifierText;
     public string? ParsedModifier { get; set; }
-    public List<StatRange> StatsRanges { get; set; }
-    public List<float> StatsRolled { get; set; }
-    public List<string> Tags { get; set; }
-
-    // Constructor
-    protected Modifier(string modifierText, List<StatRange> statsRanges, List<string> tags)
-    {
-        ModifierId = nextId++;
-        ModifierText = modifierText;
-        StatsRanges = statsRanges ?? []; ;
-        StatsRolled = [];
-        Tags = tags ?? [];
-    }
+    public List<StatRange> StatsRanges { get; set; } = statsRanges ?? [];
+    public List<float> StatsRolled { get; set; } = [];
+    public List<string> Tags { get; set; } = tags ?? [];
 
     public void RollStats(Random randomizer)
     {
