@@ -1,13 +1,25 @@
 namespace FirstFiddle;
 
-public abstract class Modifier(int modifierId, string modifierText, List<StatRange> statsRanges, List<string> tags)
+public abstract class Modifier
 {
-    public int ModifierId { get; set; } = modifierId;
-    public string ModifierText { get; set; } = modifierText;
+    // Auto incrementing int fo ModifierId
+    private static int nextId = 1;
+    public int ModifierId { get; private set; }
+    public string ModifierText { get; set; }
     public string? ParsedModifier { get; set; }
-    public List<StatRange> StatsRanges { get; set; } = statsRanges;
-    public List<float> StatsRolled { get; set; } = [];
-    public List<string> Tags { get; set; } = tags;
+    public List<StatRange> StatsRanges { get; set; }
+    public List<float> StatsRolled { get; set; }
+    public List<string> Tags { get; set; }
+
+    // Constructor
+    protected Modifier(string modifierText, List<StatRange> statsRanges, List<string> tags)
+    {
+        ModifierId = nextId++;
+        ModifierText = modifierText;
+        StatsRanges = statsRanges ?? []; ;
+        StatsRolled = [];
+        Tags = tags ?? [];
+    }
 
     public void RollStats(Random randomizer)
     {
