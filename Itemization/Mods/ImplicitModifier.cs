@@ -1,4 +1,6 @@
-namespace FirstFiddle;
+using FirstFiddle.Util;
+
+namespace FirstFiddle.Itemization.Mods;
 
 public class ImplicitModifier(string modifierText, List<StatRange> statsRanges, List<string> tags)
              : Modifier(modifierText, statsRanges, tags)

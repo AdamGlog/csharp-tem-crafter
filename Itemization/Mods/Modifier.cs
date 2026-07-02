@@ -1,4 +1,6 @@
-namespace FirstFiddle;
+using FirstFiddle.Util;
+
+namespace FirstFiddle.Itemization.Mods;
 
 public abstract class Modifier
 {

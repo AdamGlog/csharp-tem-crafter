@@ -1,4 +1,4 @@
-namespace FirstFiddle;
+namespace FirstFiddle.Itemization;
 
 using System;
 

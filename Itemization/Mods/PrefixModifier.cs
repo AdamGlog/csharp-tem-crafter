@@ -1,4 +1,6 @@
-namespace FirstFiddle;
+using FirstFiddle.Util;
+
+namespace FirstFiddle.Itemization.Mods;
 
 public class PrefixModifier(string modifierText, List<StatRange> statsRanges, List<string> tags)
              : ExplicitModifier(modifierText, statsRanges, tags)

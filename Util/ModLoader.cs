@@ -1,5 +1,6 @@
-namespace FirstFiddle;
+namespace FirstFiddle.Util;
 
+using FirstFiddle.Itemization.Mods;
 using Newtonsoft.Json;
 
 public static class ModLoader

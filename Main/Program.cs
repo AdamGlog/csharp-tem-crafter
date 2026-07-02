@@ -1,4 +1,8 @@
-namespace FirstFiddle;
+using FirstFiddle.Itemization;
+using FirstFiddle.Itemization.Mods;
+using FirstFiddle.Util;
+
+namespace FirstFiddle.Main;
 
 class Program
 {

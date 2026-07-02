@@ -1,4 +1,6 @@
-namespace FirstFiddle;
+using FirstFiddle.Itemization.Mods;
+
+namespace FirstFiddle.Itemization;
 
 public class Item(string name, List<ImplicitModifier> implicits, List<PrefixModifier> prefixes, List<SuffixModifier> suffixes)
 {
